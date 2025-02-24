@@ -63,8 +63,11 @@ def generate_blog_posts(markdown_dir):
     <title>${title} - motleycoder.dev</title>
     <link rel="stylesheet" href="../style/styles.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="roboto-serif-hompeage">
     <div class="blog-post">
         <div class="post-meta">${date}</div>
         <div class="post-content">
