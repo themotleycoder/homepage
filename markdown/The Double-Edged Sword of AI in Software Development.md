@@ -10,12 +10,10 @@ Imagine a junior developer tasked with building a new feature. Armed with an AI 
 
 This over-reliance can lead to several issues:
 
-| Potential Issue | Explanation |
-| :---- | :---- |
-| Reduced Code Comprehension | Developers may struggle to interpret, debug, or maintain code they haven't actively engaged with. This can lead to difficulties in troubleshooting, extending functionality, and collaborating with others. |
-| Knowledge Gaps | When developers leave a team, their successors might inherit AI-generated code that is poorly documented and difficult to understand. This can create knowledge silos and hinder the long-term maintainability of projects. Furthermore, the ease with which AI can generate code might lead to larger "batch sizes" of code changes, making it more challenging for reviewers to thoroughly understand and provide feedback on the code 2. This can further exacerbate knowledge gaps and hinder effective collaboration. |
-| Dehumanized Learning Experience | The reliance on AI tools can diminish the crucial role of human interaction and mentorship in the learning process 3. The opportunity to learn from experienced colleagues, ask questions, and engage in discussions about code design and best practices is essential for developing a deep understanding of software development. |
-| Technical Debt | Over time, relying on AI-generated code without proper review and understanding can lead to an accumulation of technical debt. This can result in increased complexity, reduced performance, and higher maintenance costs in the long run. |
+* Reduced Code Comprehension: Developers may struggle to interpret, debug, or maintain code they haven't actively engaged with. This can lead to difficulties in troubleshooting, extending functionality, and collaborating with others.  
+* Knowledge Gaps: When developers leave a team, their successors might inherit AI-generated code that is poorly documented and difficult to understand. This can create knowledge silos and hinder the long-term maintainability of projects. Furthermore, the ease with which AI can generate code might lead to larger "batch sizes" of code changes, making it more challenging for reviewers to thoroughly understand and provide feedback on the code. This can further exacerbate knowledge gaps and hinder effective collaboration.  
+* Impersonal Learning Experience: The reliance on AI tools can diminish the crucial role of human interaction and mentorship in the learning process. The opportunity to learn from experienced colleagues, ask questions, and engage in discussions about code design and best practices is essential for developing a deep understanding of software development.  
+* Technical Debt: Over time, relying on AI-generated code without proper review and understanding can lead to an accumulation of technical debt. This can result in increased complexity, reduced performance, and higher maintenance costs in the long run.
 
 ## **The Pressure to Deliver and the Erosion of Developer Skills**
 
@@ -35,11 +33,11 @@ As Kelsey Hightower aptly [points out](https://bsky.app/profile/kelseyhightower.
 
 Imagine a scenario where, instead of purchasing expensive AI tools, a company invests in:
 
-* Upskilling programs: Providing developers with training on advanced programming concepts, architectural design, and AI fundamentals.5  
-* Mentorship initiatives: Pairing junior developers with experienced mentors who can guide them, answer their questions, and foster a deeper understanding of software development principles.6  
+* Upskilling programs: Providing developers with training on advanced programming concepts, architectural design, and AI fundamentals.  
+* Mentorship initiatives: Pairing junior developers with experienced mentors who can guide them, answer their questions, and foster a deeper understanding of software development principles.  
 * Knowledge-sharing platforms: Creating internal communities where developers can share their knowledge, collaborate on projects, and learn from each other's experiences.
 
-By investing in developers, companies can cultivate a workforce that is not only proficient in using AI tools but also possesses the critical thinking, problem-solving, and creativity needed to build truly innovative and robust software solutions.7
+By investing in developers, companies can cultivate a workforce that is not only proficient in using AI tools but also possesses the critical thinking, problem-solving, and creativity needed to build truly innovative and robust software solutions.
 
 ## **The Loop of Wasted Time**
 
@@ -55,16 +53,16 @@ This issue highlights the importance of:
 
 ## **Striking a Balance: AI as a Collaborative Partner**
 
-The key to mitigating the risks of decreased knowledge retention and deskilling lies in viewing AI tools not as replacements for developers, but as collaborative partners. Instead of passively accepting AI-generated code, developers should actively engage with it, critically evaluating its suggestions, understanding the underlying logic, and refining it to meet specific needs.8 For example, developers can use AI tools to generate code snippets and then manually review and refactor the code, ensuring it adheres to best practices and meets specific performance requirements. They can also use AI tools to explain the logic behind existing code, helping them understand complex algorithms or unfamiliar codebases.9
+The key to mitigating the risks of decreased knowledge retention and deskilling lies in viewing AI tools not as replacements for developers, but as collaborative partners. Instead of passively accepting AI-generated code, developers should actively engage with it, critically evaluating its suggestions, understanding the underlying logic, and refining it to meet specific needs. For example, developers can use AI tools to generate code snippets and then manually review and refactor the code, ensuring it adheres to best practices and meets specific performance requirements. They can also use AI tools to explain the logic behind existing code, helping them understand complex algorithms or unfamiliar codebases.
 
 This approach requires a shift in mindset:
 
-* Embrace Continuous Learning: Developers must prioritize continuous learning and skill development, even with the assistance of AI tools.10 This includes staying updated on new technologies, deepening their understanding of core programming concepts, and honing their problem-solving abilities. AI tools can even be used to facilitate this learning process. For instance, generative AI can help developers quickly brush up on unfamiliar codebases, languages, or frameworks 5.11  
+* Embrace Continuous Learning: Developers must prioritize continuous learning and skill development, even with the assistance of AI tools. This includes staying updated on new technologies, deepening their understanding of core programming concepts, and honing their problem-solving abilities. AI tools can even be used to facilitate this learning process. For instance, generative AI can help developers quickly brush up on unfamiliar codebases, languages, or frameworks.  
 * Promote Code Review and Collaboration: Thorough code reviews and collaborative discussions are crucial to ensure the quality and maintainability of AI-generated code. This allows developers to learn from each other, identify potential issues, and ensure a shared understanding of the codebase.  
 * Focus on Higher-Level Thinking: As AI tools handle more routine tasks, developers should focus on higher-level aspects of software development, such as system architecture, design patterns, and user experience. This allows them to leverage their expertise and creativity to build truly innovative solutions.  
-* Active User Engagement: Rather than simply relying on AI to autonomously solve tasks, developers should actively engage with the AI process 2. This can involve techniques like "lead and reveal," where the AI guides the user through the steps involved in solving a problem, promoting a deeper understanding of the process.
+* Active User Engagement: Rather than simply relying on AI to autonomously solve tasks, developers should actively engage with the AI process. This can involve techniques like "lead and reveal," where the AI guides the user through the steps involved in solving a problem, promoting a deeper understanding of the process.
 
-Interestingly, research suggests that AI can actually improve job satisfaction for developers 7.12 By automating tedious tasks and allowing developers to focus on more creative and fulfilling aspects of their work, AI tools can contribute to a more engaging and rewarding work experience.13
+Interestingly, research suggests that AI can actually improve job satisfaction for developers. By automating tedious tasks and allowing developers to focus on more creative and fulfilling aspects of their work, AI tools can contribute to a more engaging and rewarding work experience.
 
 ## **Evolving Education and Training**
 
@@ -74,9 +72,9 @@ The increasing use of AI tools also necessitates a shift in developer education 
 * Prompt Engineering: Developers will need to master the art of crafting effective prompts to guide AI tools and achieve desired outcomes.  
 * Critical Evaluation: The ability to critically evaluate AI-generated code, identify potential biases, and ensure its alignment with project goals will be essential.
 
-Furthermore, computer science education itself needs to evolve to accommodate the increasing use of AI tools 8. Curricula and pedagogical approaches need to adapt to the AI-driven software development landscape, incorporating AI fundamentals, ethical considerations, and strategies for effective human-AI collaboration 10.14 This includes exploring how AI can be used to personalize learning paths and provide adaptive learning experiences 9. For example, AI-powered platforms can analyze individual learning styles and tailor educational content accordingly, providing a more efficient and engaging learning experience.15
+Furthermore, computer science education itself needs to evolve to accommodate the increasing use of AI tools. Learning plans and teaching methods need to adapt to the AI-driven software development landscape, incorporating AI fundamentals, ethical considerations, and strategies for effective human-AI collaboration. This includes exploring how AI can be used to personalize learning paths and provide adaptive learning experiences. For example, AI-powered platforms can analyze individual learning styles and tailor educational content accordingly, providing a more efficient and engaging learning experience.
 
-Crucially, a strong foundation in the fundamentals of computer science will remain critical. This includes a deep understanding of algorithms, data structures, and different programming paradigms 11. This foundational knowledge is essential for understanding how different languages work, their strengths and weaknesses, and how to optimize code for performance and efficiency. By grasping these core concepts, developers can effectively evaluate AI-generated code, identify potential issues, and make informed decisions about the best approach to solve a problem.
+Crucially, a strong foundation in the fundamentals of computer science will remain critical. This includes a deep understanding of algorithms, data structures, and different programming paradigms. This foundational knowledge is essential for understanding how different languages work, their strengths and weaknesses, and how to optimize code for performance and efficiency. By grasping these core concepts, developers can effectively evaluate AI-generated code, identify potential issues, and make informed decisions about the best approach to solve a problem.
 
 ## **Conclusion**
 

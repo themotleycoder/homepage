@@ -1,11 +1,11 @@
-// blogs.js - Auto-generated on 2025-02-24 21:24:16
+// blogs.js - Auto-generated on 2025-02-22 21:37:53
 // Do not edit directly - use generate_blog.py script instead
 
 const blogPosts = [
   {
-    "title": "First Post",
-    "date": "February 24, 2025",
-    "slug": "first-post",
+    "title": "The Double Edged Sword Of Ai In Software Development",
+    "date": "February 22, 2025",
+    "slug": "the-double-edged-sword-of-ai-in-software-development",
     "excerpt": "The Double-Edged Sword of AI in Software Development: Enhanced Productivity vs. Diminished Knowledge\nThe rise of Artificial Intelligence (AI) in..."
   }
 ];
