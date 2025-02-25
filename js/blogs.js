@@ -1,12 +1,12 @@
-// blogs.js - Auto-generated on 2025-02-22 21:37:53
+// blogs.js - Auto-generated on 2025-02-22 22:19:50
 // Do not edit directly - use generate_blog.py script instead
 
 const blogPosts = [
   {
-    "title": "The Double Edged Sword Of Ai In Software Development",
+    "title": "Ai Tools And Developer Growth In Modern Software Engineering",
     "date": "February 22, 2025",
-    "slug": "the-double-edged-sword-of-ai-in-software-development",
-    "excerpt": "The Double-Edged Sword of AI in Software Development: Enhanced Productivity vs. Diminished Knowledge\nThe rise of Artificial Intelligence (AI) in..."
+    "slug": "ai-tools-and-developer-growth-in-modern-software-engineering",
+    "excerpt": "Finding Balance: AI Tools and Developer Growth in Modern Software Engineering\nThe rise of Artificial Intelligence (AI) in software development has..."
   }
 ];
 
