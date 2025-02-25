@@ -1,10 +1,10 @@
-// blogs.js - Auto-generated on 2025-02-22 22:19:50
+// blogs.js - Auto-generated on 2025-02-25 16:10:48
 // Do not edit directly - use generate_blog.py script instead
 
 const blogPosts = [
   {
     "title": "Ai Tools And Developer Growth In Modern Software Engineering",
-    "date": "February 22, 2025",
+    "date": "February 25, 2025",
     "slug": "ai-tools-and-developer-growth-in-modern-software-engineering",
     "excerpt": "Finding Balance: AI Tools and Developer Growth in Modern Software Engineering\nThe rise of Artificial Intelligence (AI) in software development has..."
   }
