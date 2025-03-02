@@ -1,8 +1,21 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
 .image-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem 0;
+    flex: 1;
+    height: 100vh;
 }
 
 .blog-section {
@@ -48,6 +61,7 @@
     max-width: 800px;
     margin: 2rem auto;
     padding: 2rem;
+    padding-bottom: 4rem; /* Add extra padding at the bottom to prevent content from being hidden behind the fixed footer */
 }
 
 .blog-post h1 {
@@ -92,9 +106,13 @@
 
   /* Footer Styles */
   .site-footer {
-    margin-top: 3rem;
-    padding: 1.5rem 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.75rem 0;
     text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
     border-top: 1px solid #eee;
   }
 
@@ -104,21 +122,22 @@
   }
 
   .footer-content p {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
     color: #333;
+    font-size: 0.8rem;
   }
 
   .footer-links {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   .footer-links a {
     color: #333;
     text-decoration: none;
     transition: color 0.2s ease;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   .footer-links a:hover {
