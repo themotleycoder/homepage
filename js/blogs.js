@@ -12,7 +12,12 @@ const blogPosts = [
 
 function loadBlogPosts() {
   const blogPostsContainer = document.querySelector('.blog-posts');
-  
+
+  // Exit early if blog posts container doesn't exist on this page
+  if (!blogPostsContainer) {
+    return;
+  }
+
   // Clear any existing content
   blogPostsContainer.innerHTML = '';
   
