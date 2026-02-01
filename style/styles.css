@@ -10,6 +10,17 @@ body {
     position: relative;
 }
 
+/* General link styles */
+a {
+    color: #E96D48;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #FF8A66;
+    text-decoration: none;
+}
+
 .image-container {
     display: flex;
     justify-content: center;
@@ -43,12 +54,12 @@ body {
 }
 
 .blog-preview h3 a {
-    color: #48443E;
+    color: #E96D48;
     text-decoration: none;
 }
 
 .blog-preview h3 a:hover {
-    color: #6B6560;
+    color: #FF8A66;
 }
 
 .post-meta {
@@ -77,12 +88,12 @@ body {
 .back-link {
     display: inline-block;
     margin-top: 2rem;
-    color: #48443E;
+    color: #E96D48;
     text-decoration: none;
 }
 
 .back-link:hover {
-    color: #6B6560;
+    color: #FF8A66;
 }
 
 .roboto-serif-hompeage {
@@ -97,7 +108,7 @@ body {
 
   .blog-preview a {
     text-decoration: none;
-    color: #48443E;
+    color: #E96D48;
   }
 
   /* Footer Styles */
@@ -130,14 +141,14 @@ body {
   }
 
   .footer-links a {
-    color: #48443E;
+    color: #E96D48;
     text-decoration: none;
     transition: color 0.2s ease;
     font-size: 1.2rem;
   }
 
   .footer-links a:hover {
-    color: #6B6560;
+    color: #FF8A66;
   }
   
   /* Custom Substack icon */
@@ -145,7 +156,7 @@ body {
     display: inline-block;
     width: 1em;
     height: 1em;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2348443E'%3E%3Cpath d='M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E96D48'%3E%3Cpath d='M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -212,13 +223,13 @@ body {
   }
 
   .project-card a {
-    color: #48443E;
+    color: #E96D48;
     text-decoration: none;
     font-weight: 500;
   }
 
   .project-card a:hover {
-    color: #6B6560;
+    color: #FF8A66;
   }
 
   /* Expertise Tags */
@@ -248,14 +259,14 @@ body {
   }
 
   .nav-links a {
-    color: #48443E;
+    color: #E96D48;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s ease;
   }
 
   .nav-links a:hover {
-    color: #6B6560;
+    color: #FF8A66;
   }
 
   /* Tech Stack Badge */
@@ -295,7 +306,7 @@ body {
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-    color: #48443E;
+    color: #E96D48;
   }
 
   .scroll-arrow {
