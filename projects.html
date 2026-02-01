@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Technical projects including Zwift Data Viewer (Flutter/AI), LEGO Train Controller (IoT), and self-hosted infrastructure demonstrating full-stack expertise.">
+    <meta name="description" content="Technical projects including Zwift Data Viewer (Flutter/AI), LEGO Train Controller (IoT), and LEGO Track Designer (React) demonstrating full-stack expertise.">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self';">
     <title>Projects - motleycoder.dev</title>
     <link rel="icon" type="image/png" href="images/mcdotlogo.png">
@@ -121,43 +121,46 @@
             </ul>
         </article>
 
-        <!-- Project 3: Self-Hosted Portfolio -->
-        <article id="homepage" class="project-entry" style="margin-bottom: 4rem;">
-            <h2>Self-Hosted Portfolio on Raspberry Pi</h2>
+        <!-- Project 3: LEGO Track Designer -->
+        <article id="legotrackdesigner" class="project-entry" style="margin-bottom: 4rem;">
+            <h2>LEGO Track Designer</h2>
             <div class="tech-stack" style="margin: 1rem 0;">
-                <span class="tech-badge">Raspberry Pi</span>
-                <span class="tech-badge">Nginx</span>
-                <span class="tech-badge">Python</span>
-                <span class="tech-badge">Let's Encrypt</span>
-                <span class="tech-badge">UFW Firewall</span>
+                <span class="tech-badge">React</span>
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">Vite</span>
+                <span class="tech-badge">Material-UI</span>
+                <span class="tech-badge">Tailwind CSS</span>
+                <span class="tech-badge">SVG</span>
             </div>
-            <p><strong>Status:</strong> Active (You're looking at it!)</p>
+            <p><strong>Status:</strong> Active</p>
 
             <h3>Problem</h3>
-            <p>Most portfolios are hosted on platforms like Vercel or Netlify. While convenient, they don't demonstrate infrastructure and DevOps skills. Self-hosting showcases end-to-end system administration.</p>
+            <p>LEGO train enthusiasts need to plan complex track layouts before physical construction. Planning on paper lacks precision, while physical trial-and-error wastes time and pieces. Digital tools need to be intuitive, accurate, and support iterative design.</p>
 
             <h3>Technical Approach</h3>
-            <p>Built a complete hosting stack on a Raspberry Pi including:</p>
+            <p>Built a browser-based visual track designer with drag-and-drop interface:</p>
             <ul>
-                <li>Nginx web server with SSL via Let's Encrypt</li>
-                <li>Automated markdown-to-HTML build pipeline (Python)</li>
-                <li>Content Security Policy (CSP) headers</li>
-                <li>UFW firewall for security</li>
-                <li>Git-based deployment workflow</li>
+                <li>Interactive canvas with pan and zoom for large layouts</li>
+                <li>Drag-and-drop track pieces (straight, curves, switches)</li>
+                <li>Rotation and flipping of track pieces for flexible layouts</li>
+                <li>Automatic connection detection between track pieces</li>
+                <li>Undo/redo functionality for iterative design</li>
+                <li>Save/load track designs as JSON files</li>
             </ul>
 
             <h3>Architecture Highlights</h3>
-            <p><strong>Build Automation:</strong> Custom Python script reads markdown files with YAML frontmatter, converts to HTML using templates, and generates JavaScript metadata files. Handles blogs, projects, and static pages.</p>
-            <p><strong>Security:</strong> HTTPS everywhere with automated cert renewal. CSP headers prevent XSS attacks. Firewall configured to only allow necessary ports. Non-root execution.</p>
-            <p><strong>Performance:</strong> Vanilla JavaScript (no frameworks) for fast page loads. Font loading optimized with display=swap. Preconnect and preload for critical resources.</p>
+            <p><strong>Component Architecture:</strong> Modular React design with TrackDesigner as main orchestrator, TrackPieces defining piece geometry and SVG paths, and specialized hooks for drag behavior, history management, and canvas navigation.</p>
+            <p><strong>Custom Hooks:</strong> useTrackHistory implements undo/redo with immutable state operations, useTrackDragging handles complex drag-and-drop with collision detection, usePanZoom manages canvas transformations for smooth navigation.</p>
+            <p><strong>Geometric System:</strong> Pure functions handle track piece transformations (rotation, flipping), connection point calculations, and automatic piece snapping. SVG-based rendering ensures crisp visuals at any zoom level.</p>
+            <p><strong>State Management:</strong> Immutable state updates through history system enable reliable undo/redo. All track operations are pure functions, making behavior predictable and testable.</p>
 
             <h3>Key Learnings</h3>
-            <p>Self-hosting requires attention to security details often handled by platforms. Let's Encrypt automation is crucial for certificate management. Minimal dependencies make maintenance easier long-term.</p>
+            <p>Interactive canvas applications require careful separation between UI state (pan/zoom) and domain state (track layout). Custom hooks enable clean separation of concerns - drag behavior, history, and canvas navigation are independently testable. SVG coordinate systems need careful handling when combining transformations, rotations, and user interactions. Immutable state patterns make undo/redo trivial but require discipline in state updates.</p>
 
             <h3>Impact</h3>
-            <p>Lighthouse scores 95+ across all categories. Demonstrates infrastructure skills beyond just coding. Full control over hosting environment and costs.</p>
+            <p>Demonstrates advanced React patterns, geometric algorithms, and interactive UI design. Shows ability to build specialized design tools with complex user interactions. Clean architecture makes the codebase maintainable and extensible for future features like track validation and 3D preview.</p>
 
-            <p><strong>Links:</strong> <a href="https://github.com/themotleycoder/homepage" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+            <p><strong>Links:</strong> <a href="https://github.com/themotleycoder/lego-track-designer" target="_blank" rel="noopener noreferrer">GitHub</a></p>
         </article>
 
         <a href="index.html" class="back-link">← Back to Home</a>
