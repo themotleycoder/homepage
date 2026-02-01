@@ -1,4 +1,6 @@
+# OS
 .DS_Store
+Thumbs.db
 
 # IntelliJ related
 *.iml
@@ -6,7 +8,40 @@
 *.iws
 .idea/
 /.idea/
+
+# VSCode
+.vscode/
 /.vscode/
 
-# .vscode related
-.vscode/
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+.env
+.venv/
+venv/
+ENV/
+env/
+
+# Byte-compiled / optimized / DLL files
+*.pyc
+*.pyo

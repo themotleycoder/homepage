@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Technical projects including Zwift Data Viewer (Flutter/AI), LEGO Train Controller (IoT), and self-hosted infrastructure demonstrating full-stack expertise.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self';">
+    <title>Projects - motleycoder.dev</title>
+    <link rel="icon" type="image/png" href="images/mcdotlogo.png">
+    <link rel="stylesheet" href="style/styles.css">
+    <!-- Improve font loading with display=swap -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Fallback for font loading -->
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    </noscript>
+</head>
+<body class="roboto-serif-hompeage">
+    <!-- Navigation -->
+    <nav class="nav-links" style="margin-top: 2rem;">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="writing.html">Writing</a>
+    </nav>
+
+    <div class="blog-post">
+        <h1>Projects</h1>
+
+        <!-- Project 1: Zwift Data Viewer -->
+        <article id="zwiftdataviewer" class="project-entry" style="margin-bottom: 4rem;">
+            <h2>Zwift Data Viewer</h2>
+            <div class="tech-stack" style="margin: 1rem 0;">
+                <span class="tech-badge">Flutter</span>
+                <span class="tech-badge">Dart</span>
+                <span class="tech-badge">Riverpod</span>
+                <span class="tech-badge">Supabase</span>
+                <span class="tech-badge">Google Gemini AI</span>
+                <span class="tech-badge">SQLite</span>
+                <span class="tech-badge">Syncfusion Charts</span>
+            </div>
+            <p><strong>Status:</strong> Production / Active</p>
+
+            <h3>Problem</h3>
+            <p>Cyclists using Zwift and Strava generate vast amounts of performance data, but analyzing this data to improve training and discover optimal routes is time-consuming. Athletes need intelligent insights that combine historical performance with AI-powered recommendations.</p>
+
+            <h3>Technical Approach</h3>
+            <p>Built a cross-platform mobile application (iOS, Android, Web) that integrates multiple data sources and provides intelligent analytics:</p>
+            <ul>
+                <li>Real-time activity tracking with power, heart rate, and elevation analysis</li>
+                <li>AI-powered route recommendations using Google Gemini (70% algorithmic, 30% AI)</li>
+                <li>Offline-first architecture with seamless online/offline transitions</li>
+                <li>Multi-source data aggregation (Strava API, Supabase cloud, SQLite local cache)</li>
+                <li>Interactive performance visualization with Syncfusion Charts</li>
+            </ul>
+
+            <h3>Architecture Highlights</h3>
+            <p><strong>Hybrid 3-Tier Data Architecture:</strong> Implements cache-aside pattern with Strava API as source, Supabase as cloud database, and SQLite for local caching. Intelligent sync strategy handles conflicts with last-write-wins, treating Supabase as source of truth.</p>
+            <p><strong>AI Integration:</strong> Hybrid recommendation engine combines algorithmic analysis (performance matching, progressive challenge) with Google Gemini 2.5 AI for pattern recognition. Graceful fallback ensures functionality even when AI is unavailable.</p>
+            <p><strong>State Management:</strong> Riverpod providers handle complex state across connectivity changes, with FutureProvider for async data loading and StateNotifierProvider for mutable state. Family providers enable parameterized queries.</p>
+            <p><strong>Authentication Flow:</strong> Multi-stage auth using Strava OAuth as primary, then Supabase auth with automatic token refresh and secure storage.</p>
+
+            <h3>Key Learnings</h3>
+            <p>Offline-first architecture requires careful consideration of conflict resolution strategies. Connection pooling and lazy loading are essential for mobile performance. Combining algorithmic and AI recommendations provides better results than either alone—algorithms handle edge cases where AI may be unreliable.</p>
+
+            <h3>Impact</h3>
+            <p>Production app with active users. Demonstrates sophisticated mobile architecture, AI integration, and data synchronization at scale. Shows ability to build complex, data-intensive applications that work seamlessly across platforms.</p>
+
+            <p><strong>Related Projects:</strong></p>
+            <ul>
+                <li><a href="https://github.com/themotleycoder/zwiftdataviewer" target="_blank" rel="noopener noreferrer">Zwift Data Viewer</a> - Main application repository</li>
+                <li><a href="https://github.com/themotleycoder/stravaapi" target="_blank" rel="noopener noreferrer">Strava API</a> - API integration layer</li>
+            </ul>
+        </article>
+
+        <!-- Project 2: LEGO Train Controller -->
+        <article id="legotraincontroller" class="project-entry" style="margin-bottom: 4rem;">
+            <h2>LEGO Train Controller</h2>
+            <div class="tech-stack" style="margin: 1rem 0;">
+                <span class="tech-badge">Flutter</span>
+                <span class="tech-badge">Dart</span>
+                <span class="tech-badge">Bluetooth LE</span>
+                <span class="tech-badge">REST API</span>
+                <span class="tech-badge">Provider</span>
+                <span class="tech-badge">IoT</span>
+            </div>
+            <p><strong>Status:</strong> Production / Active</p>
+
+            <h3>Problem</h3>
+            <p>LEGO Powered Up trains and switches require proximity for manual control. Remote automation and multi-device coordination is challenging. Hobbyists need a system that bridges digital control with physical hardware.</p>
+
+            <h3>Technical Approach</h3>
+            <p>Built a Flutter mobile application that controls LEGO Powered Up hubs via Bluetooth Low Energy through a backend server:</p>
+            <ul>
+                <li>Manual train operation with speed and direction control</li>
+                <li>Track switch management for route coordination</li>
+                <li>Autonomous mode for automated train operation</li>
+                <li>Real-time status monitoring (connectivity, speed, direction, signal strength)</li>
+                <li>Multi-device simultaneous control</li>
+            </ul>
+
+            <h3>Architecture Highlights</h3>
+            <p><strong>Hardware Integration:</strong> Communicates with LEGO Powered Up hubs using Bluetooth Low Energy protocol. Backend server handles BLE complexity, exposing simple REST API for train/switch control.</p>
+            <p><strong>State Management:</strong> Provider pattern with specialized providers for trains and switches. Polling mechanism (configurable, default 1s) maintains current device status across UI.</p>
+            <p><strong>REST API Design:</strong> Clean endpoint structure for train control (POST /train), switch management (POST /switch), autonomous mode (POST /selfdrive), status retrieval (GET /connected/*), and system reset.</p>
+            <p><strong>Data Models:</strong> Uses Freezed and json_serializable for type-safe, immutable data models with JSON serialization.</p>
+
+            <h3>Key Learnings</h3>
+            <p>IoT projects require careful abstraction layers—separating BLE complexity from application logic makes the system more maintainable. Polling vs push notifications involves trade-offs; polling is simpler but less efficient. Physical hardware debugging is fundamentally different from software—Bluetooth signal strength and physical interference matter.</p>
+
+            <h3>Impact</h3>
+            <p>Demonstrates IoT and hardware integration skills rarely seen in typical software portfolios. Shows ability to bridge digital and physical worlds, handle real-time control systems, and design APIs for hardware abstraction. Production deployment on both iOS and Android.</p>
+
+            <p><strong>Related Projects:</strong></p>
+            <ul>
+                <li><a href="https://github.com/themotleycoder/legocontroller" target="_blank" rel="noopener noreferrer">LEGO Controller</a> - Flutter mobile application</li>
+                <li><a href="https://github.com/themotleycoder/lego-bluetooth-controller" target="_blank" rel="noopener noreferrer">LEGO Bluetooth Controller</a> - Backend Bluetooth driver</li>
+            </ul>
+        </article>
+
+        <!-- Project 3: Self-Hosted Portfolio -->
+        <article id="homepage" class="project-entry" style="margin-bottom: 4rem;">
+            <h2>Self-Hosted Portfolio on Raspberry Pi</h2>
+            <div class="tech-stack" style="margin: 1rem 0;">
+                <span class="tech-badge">Raspberry Pi</span>
+                <span class="tech-badge">Nginx</span>
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">Let's Encrypt</span>
+                <span class="tech-badge">UFW Firewall</span>
+            </div>
+            <p><strong>Status:</strong> Active (You're looking at it!)</p>
+
+            <h3>Problem</h3>
+            <p>Most portfolios are hosted on platforms like Vercel or Netlify. While convenient, they don't demonstrate infrastructure and DevOps skills. Self-hosting showcases end-to-end system administration.</p>
+
+            <h3>Technical Approach</h3>
+            <p>Built a complete hosting stack on a Raspberry Pi including:</p>
+            <ul>
+                <li>Nginx web server with SSL via Let's Encrypt</li>
+                <li>Automated markdown-to-HTML build pipeline (Python)</li>
+                <li>Content Security Policy (CSP) headers</li>
+                <li>UFW firewall for security</li>
+                <li>Git-based deployment workflow</li>
+            </ul>
+
+            <h3>Architecture Highlights</h3>
+            <p><strong>Build Automation:</strong> Custom Python script reads markdown files with YAML frontmatter, converts to HTML using templates, and generates JavaScript metadata files. Handles blogs, projects, and static pages.</p>
+            <p><strong>Security:</strong> HTTPS everywhere with automated cert renewal. CSP headers prevent XSS attacks. Firewall configured to only allow necessary ports. Non-root execution.</p>
+            <p><strong>Performance:</strong> Vanilla JavaScript (no frameworks) for fast page loads. Font loading optimized with display=swap. Preconnect and preload for critical resources.</p>
+
+            <h3>Key Learnings</h3>
+            <p>Self-hosting requires attention to security details often handled by platforms. Let's Encrypt automation is crucial for certificate management. Minimal dependencies make maintenance easier long-term.</p>
+
+            <h3>Impact</h3>
+            <p>Lighthouse scores 95+ across all categories. Demonstrates infrastructure skills beyond just coding. Full control over hosting environment and costs.</p>
+
+            <p><strong>Links:</strong> <a href="https://github.com/themotleycoder/homepage" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+        </article>
+
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://github.com/themotleycoder" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                <a href="https://substack.com/@motleycoder" target="_blank" rel="noopener noreferrer" aria-label="Substack"><i class="fa-substack" aria-hidden="true"></i></a>
+                <a href="https://medium.com/@themotleycoder" target="_blank" rel="noopener noreferrer" aria-label="Medium"><i class="fab fa-medium" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

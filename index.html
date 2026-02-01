@@ -2,8 +2,11 @@
 <html>
 
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="CTO and technical leader specializing in full-stack development, AI integration, and microservices architecture. Building scalable systems and empowering engineering teams.">
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self';">
-        <title>motleycoder.dev</title>
+        <title>motleycoder.dev - CTO & Technical Leader</title>
         <link rel="icon" type="image/png" href="images/mcdotlogo.png">
         <link rel="stylesheet" href="style/styles.css">
         <!-- Preload critical resources -->
@@ -11,33 +14,151 @@
         <!-- Improve font loading with display=swap -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+        <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
         <!-- Font Awesome for icons -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <!-- Fallback for font loading -->
         <noscript>
-            <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
         </noscript>
         <!-- Load scripts with defer -->
         <script defer src="js/blogs.js"></script>
     </head>
 
     <body class="roboto-serif-hompeage">
+        <!-- Hero Section: Keep existing full-screen logo -->
         <a href="https://github.com/themotleycoder/">
             <div class="image-container">
                 <img src="images/mcdotlogo.png" width="50%" alt="motleycoder.dev">
             </div>
         </a>
-        
+
+        <!-- Scroll Down Indicator -->
+        <div class="scroll-indicator">
+            <a href="#about" aria-label="Scroll to content">
+                <div class="scroll-arrow">↓</div>
+            </a>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="nav-links">
+            <a href="#about">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="about.html">More About Me</a>
+            <a href="writing.html">Writing</a>
+        </nav>
+
+        <!-- About Section -->
+        <section id="about" class="section about-section">
+            <h2 class="section-title">About</h2>
+            <p>CTO and technical leader with expertise in full-stack development, AI integration, and microservices architecture. Passionate about building scalable systems and empowering engineering teams.</p>
+            <p>Focused on thoughtful technical leadership, developer growth, and creating elegant solutions to complex problems.</p>
+        </section>
+
+        <!-- Featured Projects Section -->
+        <section id="projects" class="section">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Zwift Data Viewer</h3>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Flutter</span>
+                        <span class="tech-badge">Dart</span>
+                        <span class="tech-badge">Gemini AI</span>
+                        <span class="tech-badge">Supabase</span>
+                    </div>
+                    <p>Cross-platform sports analytics app with AI-powered route recommendations, offline-first architecture, and real-time performance visualization for cycling data.</p>
+                    <p><a href="projects.html#zwiftdataviewer">Learn more →</a></p>
+                </div>
+
+                <div class="project-card">
+                    <h3>LEGO Train Controller</h3>
+                    <div class="tech-stack">
+                        <span class="tech-badge">IoT</span>
+                        <span class="tech-badge">Bluetooth</span>
+                        <span class="tech-badge">Raspberry Pi</span>
+                        <span class="tech-badge">Mobile</span>
+                    </div>
+                    <p>Hardware integration project controlling LEGO trains via Bluetooth from mobile devices, bridging digital control systems with physical hardware.</p>
+                    <p><a href="projects.html#legotraincontroller">Learn more →</a></p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Self-Hosted Portfolio</h3>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Raspberry Pi</span>
+                        <span class="tech-badge">Nginx</span>
+                        <span class="tech-badge">Python</span>
+                    </div>
+                    <p>This site - a self-hosted portfolio with automated markdown-to-HTML build pipeline, demonstrating DevOps and infrastructure skills.</p>
+                    <p><a href="projects.html#homepage">Learn more →</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Expertise Section -->
+        <section id="expertise" class="section">
+            <h2 class="section-title">Technical Expertise</h2>
+            <div class="expertise-container">
+                <span class="expertise-tag">Full-Stack Development</span>
+                <span class="expertise-tag">AI/ML Integration</span>
+                <span class="expertise-tag">Mobile & Cross-Platform</span>
+                <span class="expertise-tag">IoT & Hardware Integration</span>
+                <span class="expertise-tag">Database Design</span>
+                <span class="expertise-tag">Offline-First Architecture</span>
+                <span class="expertise-tag">Performance Optimization</span>
+                <span class="expertise-tag">DevOps & Infrastructure</span>
+            </div>
+        </section>
+
+        <!-- Recent Writing Section -->
+        <section id="writing" class="section blog-section">
+            <h2 class="section-title">Recent Writing</h2>
+            <div class="blog-posts"></div>
+        </section>
+
         <footer class="site-footer">
             <div class="footer-content">
                 <div class="footer-links">
                     <a href="https://github.com/themotleycoder" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
                     <a href="https://substack.com/@motleycoder" target="_blank" rel="noopener noreferrer" aria-label="Substack"><i class="fa-substack" aria-hidden="true"></i></a>
-                    <a href="https://medium.com/@themotleycoder" target="_blank" rel="noopener noreferrer" aria-label="Medium"><i class="fab fa-medium" aria-hidden="true"></i></a> 
+                    <a href="https://medium.com/@themotleycoder" target="_blank" rel="noopener noreferrer" aria-label="Medium"><i class="fab fa-medium" aria-hidden="true"></i></a>
                 </div>
             </div>
         </footer>
+
+        <!-- Back to Top Button -->
+        <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
+
+        <script>
+            // Scroll indicators functionality
+            const backToTopButton = document.getElementById('back-to-top');
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+
+            window.addEventListener('scroll', () => {
+                const scrollPosition = window.scrollY;
+
+                // Hide scroll-down indicator after scrolling
+                if (scrollPosition > 100) {
+                    scrollIndicator.style.opacity = '0';
+                    scrollIndicator.style.visibility = 'hidden';
+                } else {
+                    scrollIndicator.style.opacity = '0.6';
+                    scrollIndicator.style.visibility = 'visible';
+                }
+
+                // Show back-to-top button after scrolling
+                if (scrollPosition > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        </script>
     </body>
 
 </html>
