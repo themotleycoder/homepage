@@ -3,9 +3,21 @@
 
 const blogPosts = [
   {
+    "title": "All of This, For a Text Box",
+    "date": "March 20, 2026",
+    "url": "https://motleycoder.substack.com/p/all-of-this-for-a-text-box",
+    "excerpt": "This is Part 1 of a two-part piece on AI and UIs. Explores what happens to web interfaces and UI design when humans stop actively navigating through digital spaces."
+  },
+  {
+    "title": "A Conversation With My Team About AI Adoption",
+    "date": "October 28, 2025",
+    "url": "https://motleycoder.substack.com/p/a-conversation-with-my-team-about",
+    "excerpt": "Avoiding the same costly mistake I've seen numerous times before. Practical considerations around implementing AI tools within engineering teams."
+  },
+  {
     "title": "Finding Balance: AI Tools and Developer Growth in Modern Software Engineering",
-    "date": "February 25, 2025",
-    "url": "https://substack.com/@motleycoder",
+    "date": "March 5, 2025",
+    "url": "https://motleycoder.substack.com/p/finding-balance-ai-tools-and-developer",
     "excerpt": "The rise of AI in software development brings productivity gains, but at what cost? This article explores the potential downsides of AI tools for developers, particularly the risk of decreased knowledge retention and deskilling effects."
   }
 ];
