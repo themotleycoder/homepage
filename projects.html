@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Technical projects including Zwift Data Viewer (Flutter/AI), LEGO Train Controller (IoT), and LEGO Track Designer (React) demonstrating full-stack expertise.">
+    <meta name="description" content="Technical projects including Zwift Data Viewer (Flutter/AI), LEGO Train Controller (IoT with RFID autonomous dispatch), and LEGO Track Designer (React) demonstrating full-stack expertise.">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self';">
     <title>Projects - motleycoder.dev</title>
     <link rel="icon" type="image/png" href="images/mcdotlogo.png">
@@ -80,44 +80,51 @@
         <article id="legotraincontroller" class="project-entry" style="margin-bottom: 4rem;">
             <h2>LEGO Train Controller</h2>
             <div class="tech-stack" style="margin: 1rem 0;">
-                <span class="tech-badge">Flutter</span>
-                <span class="tech-badge">Dart</span>
+                <span class="tech-badge">React</span>
+                <span class="tech-badge">TypeScript</span>
+                <span class="tech-badge">Vite</span>
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">FastAPI</span>
                 <span class="tech-badge">Bluetooth LE</span>
+                <span class="tech-badge">MQTT</span>
+                <span class="tech-badge">Raspberry Pi Pico</span>
                 <span class="tech-badge">REST API</span>
-                <span class="tech-badge">Provider</span>
                 <span class="tech-badge">IoT</span>
             </div>
             <p><strong>Status:</strong> Production / Active</p>
 
             <h3>Problem</h3>
-            <p>LEGO Powered Up trains and switches require proximity for manual control. Remote automation and multi-device coordination is challenging. Hobbyists need a system that bridges digital control with physical hardware.</p>
+            <p>LEGO Powered Up trains and switches require proximity for manual control. Remote automation and multi-device coordination is challenging, and running several trains on one layout risks collisions without a way to track where each train actually is. Hobbyists need a system that bridges digital control with physical hardware, is easy to reach from any device, and can optionally run itself.</p>
 
             <h3>Technical Approach</h3>
-            <p>Built a Flutter mobile application that controls LEGO Powered Up hubs via Bluetooth Low Energy through a backend server:</p>
+            <p>Built a React/TypeScript web app and a Python/FastAPI backend that controls LEGO Powered Up and Technic hubs over Bluetooth Low Energy, with an optional RFID-based dispatcher for fully autonomous operation. The control surface started as a Flutter mobile app and was rebuilt as a web UI so it can be reached from any browser on the network without installing anything:</p>
             <ul>
-                <li>Manual train operation with speed and direction control</li>
-                <li>Track switch management for route coordination</li>
-                <li>Autonomous mode for automated train operation</li>
-                <li>Real-time status monitoring (connectivity, speed, direction, signal strength)</li>
-                <li>Multi-device simultaneous control</li>
+                <li>Manual train operation with speed and direction control over a persistent, auto-reconnecting BLE/GATT connection to stock hub firmware</li>
+                <li>Track switch management (Motor and DCMotor switches, up to 4 ports per hub) with command verification and reliability stats</li>
+                <li>Optional RFID autonomous dispatch: Raspberry Pi Pico 2 W + RFID readers report train position over MQTT, so the system can hold trains at block boundaries, auto-align switches, resolve contention between trains, and fail safe via a watchdog if a train misses an expected tag — track/switch/sensor wiring for the dispatcher is generated directly from a layout drawn in the <a href="#legotrackdesigner">LEGO Track Designer</a> project's topology export, rather than mapped out by hand</li>
+                <li>Real-time status monitoring (connectivity, speed, direction, signal strength, connection quality)</li>
+                <li>Multi-device simultaneous control from any browser on the network</li>
+                <li>API secured with per-key auth and per-endpoint rate limiting</li>
             </ul>
 
             <h3>Architecture Highlights</h3>
-            <p><strong>Hardware Integration:</strong> Communicates with LEGO Powered Up hubs using Bluetooth Low Energy protocol. Backend server handles BLE complexity, exposing simple REST API for train/switch control.</p>
-            <p><strong>State Management:</strong> Provider pattern with specialized providers for trains and switches. Polling mechanism (configurable, default 1s) maintains current device status across UI.</p>
-            <p><strong>REST API Design:</strong> Clean endpoint structure for train control (POST /train), switch management (POST /switch), autonomous mode (POST /selfdrive), status retrieval (GET /connected/*), and system reset.</p>
-            <p><strong>Data Models:</strong> Uses Freezed and json_serializable for type-safe, immutable data models with JSON serialization.</p>
+            <p><strong>Hardware Integration:</strong> Trains are controlled directly over BLE/GATT against stock LEGO Powered Up firmware (no custom firmware upload needed); switches run a Pybricks-based broadcast/observe protocol on Technic Hubs. A custom BLE scanner handles forced cleanup and auto-recovery.</p>
+            <p><strong>Web Client:</strong> React 19 + TypeScript app built with Vite, using React Context for state management and polling the backend (configurable, default 1s) to keep the UI in sync. Runs anywhere on the network as a static build, versus the earlier Flutter app which required a device-specific install.</p>
+            <p><strong>REST API Design:</strong> FastAPI backend exposes train control (POST /train), switch control (POST /switch), status retrieval (GET /connected/trains, GET /connected/switches), a health check, and connection reset (POST /reset) — every mutating endpoint requires an X-API-Key header and is rate-limited per client IP.</p>
+            <p><strong>Autonomous Dispatch:</strong> A separate dispatcher package (track model, block manager, MQTT bridge, watchdog) runs as a background task inside the same service, driving trains/switches through the same controllers the REST API uses. It can run standalone in a mock mode with no hardware attached, for testing the routing logic in isolation.</p>
+            <p><strong>Data Models:</strong> TypeScript types on the web client; pydantic-settings for backend configuration.</p>
 
             <h3>Key Learnings</h3>
-            <p>IoT projects require careful abstraction layers - separating BLE complexity from application logic makes the system more maintainable. Polling vs push notifications involves trade-offs; polling is simpler but less efficient. Physical hardware debugging is fundamentally different from software - Bluetooth signal strength and physical interference matter.</p>
+            <p>IoT projects require careful abstraction layers - separating BLE complexity from application and dispatch logic makes the system more maintainable, and paid off directly when the control surface itself was swapped from a Flutter app to a web client without touching the backend. Polling vs push notifications involves trade-offs; polling is simpler but less efficient. Coordinating multiple autonomous agents on shared physical infrastructure (track blocks) surfaces real distributed-systems problems - contention, deadlock, and failsafe behavior all needed explicit handling. Physical hardware debugging is fundamentally different from software - Bluetooth signal strength and physical interference matter.</p>
 
             <h3>Impact</h3>
-            <p>Demonstrates IoT and hardware integration skills rarely seen in typical software portfolios. Shows ability to bridge digital and physical worlds, handle real-time control systems, and design APIs for hardware abstraction. Production deployment on both iOS and Android.</p>
+            <p>Demonstrates IoT and hardware integration skills rarely seen in typical software portfolios, extended into distributed coordination: collision-protected, multi-train autonomous operation driven by RFID position tracking over MQTT. Shows ability to bridge digital and physical worlds, secure and rate-limit a hardware-facing API, and design for production deployment (systemd service, structured logging), with a browser-based client that lowers the barrier to entry versus a native mobile install.</p>
 
             <p><strong>Related Projects:</strong></p>
             <ul>
-                <li><a href="https://github.com/themotleycoder/legocontroller" target="_blank" rel="noopener noreferrer">LEGO Controller</a> - Flutter mobile application</li>
+                <li><a href="https://github.com/themotleycoder/legocontrollerweb" target="_blank" rel="noopener noreferrer">LEGO Controller Web</a> - React/TypeScript web application</li>
                 <li><a href="https://github.com/themotleycoder/lego-bluetooth-controller" target="_blank" rel="noopener noreferrer">LEGO Bluetooth Controller</a> - Backend Bluetooth driver</li>
+                <li><a href="#legotrackdesigner">LEGO Track Designer</a> - Supplies the track topology this project's RFID dispatcher runs on</li>
             </ul>
         </article>
 
@@ -131,34 +138,43 @@
                 <span class="tech-badge">Material-UI</span>
                 <span class="tech-badge">Tailwind CSS</span>
                 <span class="tech-badge">SVG</span>
+                <span class="tech-badge">Vitest</span>
             </div>
             <p><strong>Status:</strong> Active</p>
 
             <h3>Problem</h3>
-            <p>LEGO train enthusiasts need to plan complex track layouts before physical construction. Planning on paper lacks precision, while physical trial-and-error wastes time and pieces. Digital tools need to be intuitive, accurate, and support iterative design.</p>
+            <p>LEGO train enthusiasts need to plan complex track layouts before physical construction. Planning on paper lacks precision, while physical trial-and-error wastes time and pieces. Digital tools need to be intuitive, accurate, and support iterative design — and ideally the layout shouldn't have to be redrawn by hand to wire up automated control.</p>
 
             <h3>Technical Approach</h3>
-            <p>Built a browser-based visual track designer with drag-and-drop interface:</p>
+            <p>Built a browser-based visual track designer with drag-and-drop interface, plus a one-click export of the layout's control topology for the <a href="#legotraincontroller">LEGO Train Controller</a> project:</p>
             <ul>
-                <li>Interactive canvas with pan and zoom for large layouts</li>
-                <li>Drag-and-drop track pieces (straight, curves, switches)</li>
-                <li>Rotation and flipping of track pieces for flexible layouts</li>
-                <li>Automatic connection detection between track pieces</li>
-                <li>Undo/redo functionality for iterative design</li>
+                <li>Drag-and-drop track pieces — straight, quarter-length straight, left/right curves, left/right switches, left/right motorized switches, and sensor-marker variants of the straight and curve pieces</li>
+                <li>Piece dimensions and connection points follow official LEGO track specifications, with switch geometry traced from real reference parts rather than approximated</li>
+                <li>Selection: click, shift-click to multi-select, or shift-drag a marquee to select a group</li>
+                <li>Rotate, flip, copy, and delete, all selection-aware</li>
+                <li>Automatic snapping between compatible connection points during drag-and-drop</li>
+                <li>Undo, and pan/zoom around the canvas</li>
                 <li>Save/load track designs as JSON files</li>
+                <li><strong>Export Track Map:</strong> traces the layout into a switch/sensor topology graph and downloads it as both a JSON file for a train-control program to consume, and a standalone interactive HTML viewer for visually checking the wiring</li>
             </ul>
 
             <h3>Architecture Highlights</h3>
             <p><strong>Component Architecture:</strong> Modular React design with TrackDesigner as main orchestrator, TrackPieces defining piece geometry and SVG paths, and specialized hooks for drag behavior, history management, and canvas navigation.</p>
-            <p><strong>Custom Hooks:</strong> useTrackHistory implements undo/redo with immutable state operations, useTrackDragging handles complex drag-and-drop with collision detection, usePanZoom manages canvas transformations for smooth navigation.</p>
-            <p><strong>Geometric System:</strong> Pure functions handle track piece transformations (rotation, flipping), connection point calculations, and automatic piece snapping. SVG-based rendering ensures crisp visuals at any zoom level.</p>
-            <p><strong>State Management:</strong> Immutable state updates through history system enable reliable undo/redo. All track operations are pure functions, making behavior predictable and testable.</p>
+            <p><strong>Custom Hooks:</strong> useTrackHistory implements undo with immutable state operations, useTrackDragging handles complex drag-and-drop with collision detection and multi-select/marquee logic, usePanZoom manages canvas transformations for smooth navigation.</p>
+            <p><strong>Geometric System:</strong> Pure functions handle track piece transformations (rotation, flipping), connection point calculations, and automatic piece snapping, calibrated against official LEGO RC Track and Standard Gauge specs. SVG-based rendering ensures crisp visuals at any zoom level.</p>
+            <p><strong>Topology Export:</strong> Walks the layout's connection graph outward from every switch, collapsing intervening straight/curve/sensor pieces into a single edge per switch-to-switch connection, labeled by exit (trunk/straight/diverge) so it lines up with how a train-control program would name a switch's routes. RFID sensor pieces become tagged points along those edges. Switch-free loops (e.g. a plain oval) are traced separately, and any exit with real track that never reaches another switch is flagged as a dangling/broken connection instead of silently disappearing. The same graph drives both the downloadable JSON and a self-contained pan/zoom SVG viewer with hover tooltips, generated client-side with no dependency on the designer app to view it.</p>
+            <p><strong>State Management:</strong> Immutable state updates through history system enable reliable undo. All track operations are pure functions, making behavior predictable and testable, and covered by a Vitest test suite.</p>
 
             <h3>Key Learnings</h3>
-            <p>Interactive canvas applications require careful separation between UI state (pan/zoom) and domain state (track layout). Custom hooks enable clean separation of concerns - drag behavior, history, and canvas navigation are independently testable. SVG coordinate systems need careful handling when combining transformations, rotations, and user interactions. Immutable state patterns make undo/redo trivial but require discipline in state updates.</p>
+            <p>Interactive canvas applications require careful separation between UI state (pan/zoom) and domain state (track layout). Custom hooks enable clean separation of concerns - drag behavior, history, and canvas navigation are independently testable. SVG coordinate systems need careful handling when combining transformations, rotations, and user interactions. Matching real-world part geometry (rather than approximating it) paid off once switches needed to snap and align precisely. Immutable state patterns make undo trivial but require discipline in state updates. Reducing a freeform layout to the graph a control program actually cares about (switches, sensors, and how they connect) forces you to explicitly define and validate what "connected" means, rather than leaving it implicit in pixel positions - and surfacing dangling routes instead of hiding them turned a possible silent bug in the exported map into a visible one in the editor.</p>
 
             <h3>Impact</h3>
-            <p>Demonstrates advanced React patterns, geometric algorithms, and interactive UI design. Shows ability to build specialized design tools with complex user interactions. Clean architecture makes the codebase maintainable and extensible for future features like track validation and 3D preview.</p>
+            <p>Demonstrates advanced React patterns, geometric algorithms, and interactive UI design. Shows ability to build specialized design tools with complex user interactions and precise, real-world-accurate geometry. Clean architecture and test coverage make the codebase maintainable and extensible for future features like track validation and 3D preview. The topology export turns the designer from a standalone planning tool into the front end of a small pipeline - track layouts drawn here feed switch/sensor wiring directly into the <a href="#legotraincontroller">LEGO Train Controller</a>'s RFID dispatcher, rather than that mapping being redone by hand.</p>
+
+            <p><strong>Related Projects:</strong></p>
+            <ul>
+                <li><a href="#legotraincontroller">LEGO Train Controller</a> - Consumes this project's exported track topology for RFID-based autonomous dispatch</li>
+            </ul>
 
             <p><strong>Links:</strong> <a href="https://github.com/themotleycoder/lego-track-designer" target="_blank" rel="noopener noreferrer">GitHub</a></p>
         </article>
