@@ -3,6 +3,12 @@
 
 const blogPosts = [
   {
+    "title": "AI Is Not Different. It Just Has Better PR.",
+    "date": "April 11, 2026",
+    "url": "https://motleycoder.substack.com/p/ai-is-not-different-it-just-has-better",
+    "excerpt": "AI adoption runs on the same moral logic as other ethically fraught industries: we know the human costs and stay disconnected from them anyway. Written from the uncomfortable seat of a CTO pushing AI adoption while not fully believing his own pitch."
+  },
+  {
     "title": "All of This, For a Text Box",
     "date": "March 20, 2026",
     "url": "https://motleycoder.substack.com/p/all-of-this-for-a-text-box",

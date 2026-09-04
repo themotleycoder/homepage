@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Technical projects including Zwift Data Viewer (Flutter/AI), LEGO Train Controller (IoT with RFID autonomous dispatch), and LEGO Track Designer (React) demonstrating full-stack expertise.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://motleycoder.dev/projects.html">
+    <meta property="og:title" content="Projects - motleycoder.dev">
+    <meta property="og:description" content="Technical projects including Zwift Data Viewer (Flutter/AI), LEGO Train Controller (IoT with RFID autonomous dispatch), and LEGO Track Designer (React) demonstrating full-stack expertise.">
+    <meta property="og:image" content="https://motleycoder.dev/images/mcdotlogo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Projects - motleycoder.dev">
+    <meta name="twitter:description" content="Technical projects including Zwift Data Viewer (Flutter/AI), LEGO Train Controller (IoT with RFID autonomous dispatch), and LEGO Track Designer (React) demonstrating full-stack expertise.">
+    <meta name="twitter:image" content="https://motleycoder.dev/images/mcdotlogo.png">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self';">
     <title>Projects - motleycoder.dev</title>
     <link rel="icon" type="image/png" href="images/mcdotlogo.png">
@@ -25,10 +34,19 @@
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="writing.html">Writing</a>
+        <a href="coaching.html">Coaching</a>
     </nav>
 
     <div class="blog-post">
         <h1>Projects</h1>
+
+        <nav class="jump-nav" aria-label="Jump to project" style="margin-bottom: 2rem; text-align: center;">
+            <a href="#zwiftdataviewer" style="color: #E96D48; text-decoration: none; font-weight: 500;">Zwift Data Viewer</a>
+            <span aria-hidden="true" style="color: #999;"> · </span>
+            <a href="#legotraincontroller" style="color: #E96D48; text-decoration: none; font-weight: 500;">LEGO Train Controller</a>
+            <span aria-hidden="true" style="color: #999;"> · </span>
+            <a href="#legotrackdesigner" style="color: #E96D48; text-decoration: none; font-weight: 500;">LEGO Track Designer</a>
+        </nav>
 
         <!-- Project 1: Zwift Data Viewer -->
         <article id="zwiftdataviewer" class="project-entry" style="margin-bottom: 4rem;">
@@ -101,7 +119,7 @@
             <ul>
                 <li>Manual train operation with speed and direction control over a persistent, auto-reconnecting BLE/GATT connection to stock hub firmware</li>
                 <li>Track switch management (Motor and DCMotor switches, up to 4 ports per hub) with command verification and reliability stats</li>
-                <li>Optional RFID autonomous dispatch: Raspberry Pi Pico 2 W + RFID readers report train position over MQTT, so the system can hold trains at block boundaries, auto-align switches, resolve contention between trains, and fail safe via a watchdog if a train misses an expected tag — track/switch/sensor wiring for the dispatcher is generated directly from a layout drawn in the <a href="#legotrackdesigner">LEGO Track Designer</a> project's topology export, rather than mapped out by hand</li>
+                <li>Optional RFID autonomous dispatch: Raspberry Pi Pico 2 W + RFID readers report train position over MQTT, so the system can hold trains at block boundaries, auto-align switches, resolve contention between trains, and fail safe via a watchdog if a train misses an expected tag. Track/switch/sensor wiring for the dispatcher is generated directly from a layout drawn in the <a href="#legotrackdesigner">LEGO Track Designer</a> project's topology export, rather than mapped out by hand</li>
                 <li>Real-time status monitoring (connectivity, speed, direction, signal strength, connection quality)</li>
                 <li>Multi-device simultaneous control from any browser on the network</li>
                 <li>API secured with per-key auth and per-endpoint rate limiting</li>
@@ -110,7 +128,7 @@
             <h3>Architecture Highlights</h3>
             <p><strong>Hardware Integration:</strong> Trains are controlled directly over BLE/GATT against stock LEGO Powered Up firmware (no custom firmware upload needed); switches run a Pybricks-based broadcast/observe protocol on Technic Hubs. A custom BLE scanner handles forced cleanup and auto-recovery.</p>
             <p><strong>Web Client:</strong> React 19 + TypeScript app built with Vite, using React Context for state management and polling the backend (configurable, default 1s) to keep the UI in sync. Runs anywhere on the network as a static build, versus the earlier Flutter app which required a device-specific install.</p>
-            <p><strong>REST API Design:</strong> FastAPI backend exposes train control (POST /train), switch control (POST /switch), status retrieval (GET /connected/trains, GET /connected/switches), a health check, and connection reset (POST /reset) — every mutating endpoint requires an X-API-Key header and is rate-limited per client IP.</p>
+            <p><strong>REST API Design:</strong> FastAPI backend exposes train control (POST /train), switch control (POST /switch), status retrieval (GET /connected/trains, GET /connected/switches), a health check, and connection reset (POST /reset); every mutating endpoint requires an X-API-Key header and is rate-limited per client IP.</p>
             <p><strong>Autonomous Dispatch:</strong> A separate dispatcher package (track model, block manager, MQTT bridge, watchdog) runs as a background task inside the same service, driving trains/switches through the same controllers the REST API uses. It can run standalone in a mock mode with no hardware attached, for testing the routing logic in isolation.</p>
             <p><strong>Data Models:</strong> TypeScript types on the web client; pydantic-settings for backend configuration.</p>
 
@@ -143,12 +161,12 @@
             <p><strong>Status:</strong> Active</p>
 
             <h3>Problem</h3>
-            <p>LEGO train enthusiasts need to plan complex track layouts before physical construction. Planning on paper lacks precision, while physical trial-and-error wastes time and pieces. Digital tools need to be intuitive, accurate, and support iterative design — and ideally the layout shouldn't have to be redrawn by hand to wire up automated control.</p>
+            <p>LEGO train enthusiasts need to plan complex track layouts before physical construction. Planning on paper lacks precision, while physical trial-and-error wastes time and pieces. Digital tools need to be intuitive, accurate, and support iterative design, and ideally the layout shouldn't have to be redrawn by hand to wire up automated control.</p>
 
             <h3>Technical Approach</h3>
             <p>Built a browser-based visual track designer with drag-and-drop interface, plus a one-click export of the layout's control topology for the <a href="#legotraincontroller">LEGO Train Controller</a> project:</p>
             <ul>
-                <li>Drag-and-drop track pieces — straight, quarter-length straight, left/right curves, left/right switches, left/right motorized switches, and sensor-marker variants of the straight and curve pieces</li>
+                <li>Drag-and-drop track pieces: straight, quarter-length straight, left/right curves, left/right switches, left/right motorized switches, and sensor-marker variants of the straight and curve pieces</li>
                 <li>Piece dimensions and connection points follow official LEGO track specifications, with switch geometry traced from real reference parts rather than approximated</li>
                 <li>Selection: click, shift-click to multi-select, or shift-drag a marquee to select a group</li>
                 <li>Rotate, flip, copy, and delete, all selection-aware</li>
