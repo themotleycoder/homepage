@@ -45,3 +45,5 @@ env/
 # Byte-compiled / optimized / DLL files
 *.pyc
 *.pyo
+# Local browser-tool output
+.playwright-mcp/
