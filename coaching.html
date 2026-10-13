@@ -17,31 +17,37 @@
     <title>Coaching - motleycoder.dev</title>
     <link rel="icon" type="image/png" href="images/mcdotlogo.png">
     <link rel="stylesheet" href="style/styles.css">
-    <!-- Improve font loading with display=swap -->
+    <script defer src="js/term-bar.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <!-- Font Awesome for icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Atkinson+Hyperlegible+Mono:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Fallback for font loading -->
     <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Atkinson+Hyperlegible+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     </noscript>
 </head>
-<body class="roboto-serif-hompeage">
-    <!-- Navigation -->
-    <nav class="nav-links" style="margin-top: 2rem;">
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="about.html">About</a>
-        <a href="writing.html">Writing</a>
-        <a href="coaching.html">Coaching</a>
-    </nav>
+<body class="roboto-serif-hompeage page">
+        <div class="term-bar">
+            <a class="term-home" href="index.html" aria-label="Home">
+                <span class="term-dot" style="background:#F0A882"></span>
+                <span class="term-dot" style="background:#E96D48"></span>
+                <span class="term-dot" style="background:#48443E"></span>
+                <span class="term-path">~/motleycoder/coaching &mdash; zsh</span>
+            </a>
+            <button class="term-toggle" type="button" aria-expanded="false" aria-controls="site-menu">menu &#9662;</button>
+            <nav class="site-nav" id="site-menu" aria-label="Site">
+                <a href="projects.html">[1] projects</a>
+                <a href="writing.html">[2] writing</a>
+                <a href="coaching.html" class="current" aria-current="page">[3] coaching</a>
+                <a href="about.html">[4] about</a>
+            </nav>
+        </div>
 
-    <div class="blog-post">
+    <div class="page-main">
+        <div class="term-cmd">$ cat coaching.md</div>
         <h1>Coaching</h1>
 
-        <section style="margin: 3rem 0;">
+        <section>
             <h2>Coaching & Mentoring Technical Leaders</h2>
             <p>I work with CTOs, VPs of Engineering, and senior technical leaders who are navigating the transition from individual contributor to strategic leader, scaling teams, or facing complex architectural decisions. The shift from writing code to enabling others to write great code requires a different skillset - one that balances technical depth with people leadership.</p>
 
@@ -84,15 +90,11 @@
         <a href="index.html" class="back-link">← Back to Home</a>
     </div>
 
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="https://github.com/themotleycoder" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
-                <a href="https://www.linkedin.com/in/james-motley/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
-                <a href="https://substack.com/@motleycoder" target="_blank" rel="noopener noreferrer" aria-label="Substack"><i class="fa-substack" aria-hidden="true"></i></a>
-                <a href="https://medium.com/@themotleycoder" target="_blank" rel="noopener noreferrer" aria-label="Medium"><i class="fab fa-medium" aria-hidden="true"></i></a>
-            </div>
-        </div>
+    <footer class="text-footer">
+        <a href="https://github.com/themotleycoder" target="_blank" rel="noopener noreferrer">github</a>
+        <a href="https://www.linkedin.com/in/james-motley/" target="_blank" rel="noopener noreferrer">linkedin</a>
+        <a href="https://substack.com/@motleycoder" target="_blank" rel="noopener noreferrer">substack</a>
+        <a href="https://medium.com/@themotleycoder" target="_blank" rel="noopener noreferrer">medium</a>
     </footer>
 </body>
 </html>

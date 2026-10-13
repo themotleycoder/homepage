@@ -17,59 +17,55 @@
     <title>Writing - motleycoder.dev</title>
     <link rel="icon" type="image/png" href="images/mcdotlogo.png">
     <link rel="stylesheet" href="style/styles.css">
-    <!-- Preload critical resources -->
+    <script defer src="js/term-bar.js"></script>
     <link rel="preload" href="js/blogs.js" as="script">
-    <!-- Improve font loading with display=swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <!-- Font Awesome for icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Atkinson+Hyperlegible+Mono:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Fallback for font loading -->
     <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Atkinson+Hyperlegible+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     </noscript>
-    <!-- Load scripts with defer -->
     <script defer src="js/blogs.js"></script>
 </head>
-<body class="roboto-serif-hompeage">
-    <!-- Navigation -->
-    <nav class="nav-links" style="margin-top: 2rem;">
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="about.html">About</a>
-        <a href="coaching.html">Coaching</a>
-    </nav>
+<body class="roboto-serif-hompeage page">
+        <div class="term-bar">
+            <a class="term-home" href="index.html" aria-label="Home">
+                <span class="term-dot" style="background:#F0A882"></span>
+                <span class="term-dot" style="background:#E96D48"></span>
+                <span class="term-dot" style="background:#48443E"></span>
+                <span class="term-path">~/motleycoder/writing &mdash; zsh</span>
+            </a>
+            <button class="term-toggle" type="button" aria-expanded="false" aria-controls="site-menu">menu &#9662;</button>
+            <nav class="site-nav" id="site-menu" aria-label="Site">
+                <a href="projects.html">[1] projects</a>
+                <a href="writing.html" class="current" aria-current="page">[2] writing</a>
+                <a href="coaching.html">[3] coaching</a>
+                <a href="about.html">[4] about</a>
+            </nav>
+        </div>
 
-    <div class="blog-section">
-        <h1 style="text-align: center; color: #333; margin-bottom: 1rem;">Writing</h1>
-        <p style="text-align: center; color: #666; max-width: 600px; margin: 0 auto 3rem auto; line-height: 1.6;">
-            Thoughts on technical leadership, system architecture, AI integration, and building great engineering teams.
-        </p>
+    <div class="page-main">
+        <div class="term-cmd">$ ls writing/</div>
+        <h1>Writing</h1>
+        <p class="page-lede">Thoughts on technical leadership, system architecture, AI integration, and building great engineering teams.</p>
 
-        <!-- Blog posts will be dynamically loaded here -->
         <div class="blog-posts"></div>
 
-        <div style="text-align: center; margin: 3rem 0;">
-            <h3 style="color: #333;">Find me elsewhere</h3>
-            <p style="color: #666; margin: 1rem 0;">
-                I also publish on <a href="https://medium.com/@themotleycoder" target="_blank" rel="noopener noreferrer" style="color: #E96D48;">Medium</a>
-                and <a href="https://substack.com/@motleycoder" target="_blank" rel="noopener noreferrer" style="color: #E96D48;">Substack</a>.
-            </p>
+        <div class="page-elsewhere">
+            <h3>Find me elsewhere</h3>
+            <p>I also publish on <a href="https://medium.com/@themotleycoder" target="_blank" rel="noopener noreferrer">Medium</a>
+            and <a href="https://substack.com/@motleycoder" target="_blank" rel="noopener noreferrer">Substack</a>.</p>
         </div>
 
-        <a href="index.html" class="back-link" style="display: block; text-align: center; margin-top: 2rem;">← Back to Home</a>
+        <a href="index.html" class="back-link">← Back to Home</a>
     </div>
 
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="https://github.com/themotleycoder" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
-                <a href="https://www.linkedin.com/in/james-motley/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
-                <a href="https://substack.com/@motleycoder" target="_blank" rel="noopener noreferrer" aria-label="Substack"><i class="fa-substack" aria-hidden="true"></i></a>
-                <a href="https://medium.com/@themotleycoder" target="_blank" rel="noopener noreferrer" aria-label="Medium"><i class="fab fa-medium" aria-hidden="true"></i></a>
-            </div>
-        </div>
+    <footer class="text-footer">
+        <a href="https://github.com/themotleycoder" target="_blank" rel="noopener noreferrer">github</a>
+        <a href="https://www.linkedin.com/in/james-motley/" target="_blank" rel="noopener noreferrer">linkedin</a>
+        <a href="https://substack.com/@motleycoder" target="_blank" rel="noopener noreferrer">substack</a>
+        <a href="https://medium.com/@themotleycoder" target="_blank" rel="noopener noreferrer">medium</a>
     </footer>
 </body>
 </html>

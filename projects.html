@@ -17,6 +17,7 @@
     <title>Projects - motleycoder.dev</title>
     <link rel="icon" type="image/png" href="images/mcdotlogo.png">
     <link rel="stylesheet" href="style/styles.css">
+    <script defer src="js/term-bar.js"></script>
     <!-- Improve font loading with display=swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,14 +29,23 @@
         <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     </noscript>
 </head>
-<body class="roboto-serif-hompeage">
+<body class="roboto-serif-hompeage projects-page">
     <!-- Navigation -->
-    <nav class="nav-links" style="margin-top: 2rem;">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="writing.html">Writing</a>
-        <a href="coaching.html">Coaching</a>
-    </nav>
+        <div class="term-bar">
+            <a class="term-home" href="index.html" aria-label="Home">
+                <span class="term-dot" style="background:#F0A882"></span>
+                <span class="term-dot" style="background:#E96D48"></span>
+                <span class="term-dot" style="background:#48443E"></span>
+                <span class="term-path">~/motleycoder/projects &mdash; zsh</span>
+            </a>
+            <button class="term-toggle" type="button" aria-expanded="false" aria-controls="site-menu">menu &#9662;</button>
+            <nav class="site-nav" id="site-menu" aria-label="Site">
+                <a href="projects.html" class="current" aria-current="page">[1] projects</a>
+                <a href="writing.html">[2] writing</a>
+                <a href="coaching.html">[3] coaching</a>
+                <a href="about.html">[4] about</a>
+            </nav>
+        </div>
 
     <div class="blog-post">
         <h1>Projects</h1>
