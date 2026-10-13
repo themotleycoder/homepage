@@ -4,7 +4,7 @@
 (function () {
   if (customElements.get('mc-dot-hero')) return;
 
-  const THREE_URL = 'https://unpkg.com/three@0.160.0/build/three.module.js';
+  const THREE_URL = './vendor/three.module.min.js';
   const FALLBACK_IMG = 'images/mcdotlogo.png';
 
   // 10x10 grid for the "M" and 10x8 grid for the "C"; 1 = a dot

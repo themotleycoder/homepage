@@ -20,7 +20,7 @@ Personal site: a plain static site (HTML, one stylesheet, a little JavaScript) w
 |---|---|
 | `style/styles.css` | The only stylesheet. Colours live in `:root` variables at the top, and the sections are numbered in the header comment. |
 | `js/blogs.js` | The list of articles. To add one, put a new entry at the top of `blogPosts`; the home page and writing page both render from it. |
-| `js/mc-dot-hero.js` | `<mc-dot-hero>`: the 3D logo on the home page. Loads three.js from unpkg, assembles the dots on first view, scatters them on scroll, and falls back to `images/mcdotlogo.png` without WebGL or when reduced motion is on. |
+| `js/mc-dot-hero.js` | `<mc-dot-hero>`: the 3D logo on the home page. Loads three.js (self-hosted in `js/vendor/`), assembles the dots on first view, scatters them on scroll, and falls back to `images/mcdotlogo.png` without WebGL or when reduced motion is on. |
 | `js/term-bar.js` | The "menu" dropdown in the header on phones. |
 
 ### How the pages share a look
@@ -41,7 +41,7 @@ Then open <http://localhost:8000>. Hard refresh after changing the stylesheet; b
 
 ### Deploying
 
-- Every page sets a Content-Security-Policy in a `<meta>` tag. The home page allows `https://unpkg.com` in `script-src` because of three.js. If Nginx adds its own security headers, they must allow that too, or the 3D logo falls back to the static image.
+- Every page sets a Content-Security-Policy in a `<meta>` tag. three.js is self-hosted in `js/vendor/three.module.min.js` (pinned to 0.160.0), so no third-party script origins are needed. To upgrade, replace that file with the new build from the `three` package.
 - `404.html` uses root-absolute paths (`/style/styles.css`) because Nginx serves it for any missing URL, including nested ones like `/a/b`. Make sure the server config points at it: `error_page 404 /404.html;`
 - The assets are not fingerprinted. After a deploy that changes the stylesheet, visitors with a cached copy may need a refresh, so consider short cache lifetimes for `style/` and `js/`.
 
